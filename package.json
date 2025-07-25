@@ -1,0 +1,242 @@
+{
+  "name": "schrod-framework",
+  "displayName": "Schröd Framework",
+  "description": "AI-driven application framework that automatically designs and implements applications through hierarchical decomposition",
+  "version": "1.0.0",
+  "publisher": "schrod-team",
+  "icon": "resources/icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Programming Languages", "Other", "Debuggers"],
+  "keywords": ["ai", "development", "automation", "typescript", "framework"],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:schrodExplorer"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "schrod.initializeProject",
+        "title": "Schröd: Initialize Project"
+      },
+      {
+        "command": "schrod.createAppSpec",
+        "title": "Schröd: Create App Spec"
+      },
+      {
+        "command": "schrod.decomposeToUILogic",
+        "title": "Schröd: Decompose to UI/Logic"
+      },
+      {
+        "command": "schrod.addFeature",
+        "title": "Schröd: Add Feature"
+      },
+      {
+        "command": "schrod.createTickets",
+        "title": "Schröd: Create Tickets"
+      },
+      {
+        "command": "schrod.runAllTickets",
+        "title": "Schröd: Run All Tickets"
+      },
+      {
+        "command": "schrod.showDependencyGraph",
+        "title": "Schröd: Show Dependency Graph"
+      },
+      {
+        "command": "schrod.runWithAISelection",
+        "title": "Schröd: Run with AI Selection"
+      },
+      {
+        "command": "schrod.runSpecificPath",
+        "title": "Schröd: Run Specific Path"
+      },
+      {
+        "command": "schrod.resumeFailed",
+        "title": "Schröd: Resume Failed"
+      },
+      {
+        "command": "schrod.cleanAndRestart",
+        "title": "Schröd: Clean and Restart"
+      },
+      {
+        "command": "schrod.plan",
+        "title": "Schröd: Plan"
+      },
+      {
+        "command": "schrod.run",
+        "title": "Schröd: Run"
+      },
+      {
+        "command": "schrod.status",
+        "title": "Schröd: Status"
+      },
+      {
+        "command": "schrod.viewDependencies",
+        "title": "Schröd: View Dependencies"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "schrod",
+          "title": "Schröd",
+          "icon": "resources/schrod.svg"
+        }
+      ]
+    },
+    "views": {
+      "schrod": [
+        {
+          "id": "schrodExplorer",
+          "name": "Schröd Explorer",
+          "contextualTitle": "Schröd Project Structure"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceExtname == '.schrod' || resourceFilename =~ /@Schröd/",
+          "command": "schrod.plan",
+          "group": "navigation@1"
+        },
+        {
+          "when": "resourceExtname == '.schrod' || resourceFilename =~ /@Schröd/",
+          "command": "schrod.run",
+          "group": "navigation@2"
+        },
+        {
+          "when": "resourceExtname == '.schrod' || resourceFilename =~ /@Schröd/",
+          "command": "schrod.status",
+          "group": "navigation@3"
+        },
+        {
+          "when": "resourceExtname == '.schrod' || resourceFilename =~ /@Schröd/",
+          "command": "schrod.viewDependencies",
+          "group": "navigation@4"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "schrod.plan",
+          "when": "view == schrodExplorer && viewItem == schrodNode",
+          "group": "inline"
+        },
+        {
+          "command": "schrod.run",
+          "when": "view == schrodExplorer && viewItem == schrodNode",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Schröd",
+      "properties": {
+        "schrod.defaultAI": {
+          "type": "string",
+          "default": "claude-sonnet-4",
+          "description": "Default AI model to use for code generation"
+        },
+        "schrod.autoRun": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically run tickets when created"
+        },
+        "schrod.showProgressNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show progress notifications during execution"
+        },
+        "schrod.parallelExecutions": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Maximum number of parallel executions"
+        },
+        "schrod.outputDirectory": {
+          "type": "string",
+          "default": "src",
+          "description": "Output directory for generated code"
+        },
+        "schrod.showDefaultStructure": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show default Schrödinger structure when no project is initialized"
+        },
+        "schrod.aiOverrides": {
+          "type": "object",
+          "default": {
+            "**/ui/**": "claude-haiku",
+            "**/logic/**": "claude-sonnet-4"
+          },
+          "description": "AI model overrides based on file patterns"
+        }
+      }
+    },
+    "colors": [
+      {
+        "id": "schrod.pendingNodeBackground",
+        "description": "Background color for pending Schröd nodes",
+        "defaults": {
+          "dark": "#3a3a3a",
+          "light": "#e0e0e0"
+        }
+      },
+      {
+        "id": "schrod.runningNodeBackground",
+        "description": "Background color for running Schröd nodes",
+        "defaults": {
+          "dark": "#2b5b84",
+          "light": "#4a90e2"
+        }
+      },
+      {
+        "id": "schrod.completedNodeBackground",
+        "description": "Background color for completed Schröd nodes",
+        "defaults": {
+          "dark": "#2b5b2b",
+          "light": "#4caf50"
+        }
+      },
+      {
+        "id": "schrod.failedNodeBackground",
+        "description": "Background color for failed Schröd nodes",
+        "defaults": {
+          "dark": "#842b2b",
+          "light": "#f44336"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.0.0",
+    "glob": "^10.4.0",
+    "typescript": "^5.5.0",
+    "@vscode/vsce": "^3.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "minimatch": "^10.0.0"
+  }
+}
