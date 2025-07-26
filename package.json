@@ -1,15 +1,24 @@
 {
   "name": "schrod-framework",
   "displayName": "Schröd Framework",
-  "description": "AI-driven application framework that automatically designs and implements applications through hierarchical decomposition",
-  "version": "1.0.0",
-  "publisher": "schrod-team",
+  "description": "AI-driven application framework that displays hierarchical Schrödinger project structure for systematic development workflow",
+  "version": "0.1.0",
+  "publisher": "nishizukakoichi",
   "icon": "resources/icon.png",
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": ["Programming Languages", "Other", "Debuggers"],
-  "keywords": ["ai", "development", "automation", "typescript", "framework"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NishizukaKoichi/Schrod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NishizukaKoichi/Schrod/issues"
+  },
+  "homepage": "https://github.com/NishizukaKoichi/Schrod#readme",
+  "license": "MIT",
+  "categories": ["Other"],
+  "keywords": ["ai", "development", "automation", "typescript", "framework", "schrodinger", "hierarchical", "project-structure"],
   "activationEvents": [
     "onStartupFinished",
     "onView:schrodExplorer"
