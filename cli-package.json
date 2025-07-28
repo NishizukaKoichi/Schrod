@@ -1,0 +1,40 @@
+{
+  "name": "schrod-cli",
+  "version": "1.0.0",
+  "description": "AI-driven application framework CLI that displays hierarchical Schrödinger project structure for systematic development workflow",
+  "main": "bin/index.js",
+  "bin": {
+    "schrod": "./bin/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "development",
+    "automation",
+    "typescript",
+    "framework",
+    "schrodinger",
+    "hierarchical",
+    "project-structure",
+    "cli"
+  ],
+  "author": "Koichi Nishizuka",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NishizukaKoichi/Schrod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NishizukaKoichi/Schrod/issues"
+  },
+  "homepage": "https://github.com/NishizukaKoichi/Schrod#readme",
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
