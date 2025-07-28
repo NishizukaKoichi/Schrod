@@ -1,78 +1,133 @@
-# Schröd Framework - VS Code Extension
+# Schröd Framework
 
-A VS Code extension that displays hierarchical Schrödinger project structure for systematic AI-driven development workflow.
+An AI-driven application development framework that implements a hierarchical "Schrödinger project structure" for systematic development workflow. Features both CLI tool and VS Code extension for comprehensive project management.
 
 ## Features
 
-- **Default Structure Display**: Shows standard Schrödinger hierarchy when no project exists
-- **Hierarchical Project Visualization**: Clear display of App → Domain → Feature → Ticket structure
-- **AI-Driven Development Context**: Provides clear context for AI development assistance
-- **Interactive Project Management**: Click-to-initialize and structured development flow
+- **Hierarchical Schrödinger Structure**: 4-level hierarchy (App → Domain → Feature → Ticket)
+- **AI-Driven Development**: Context-aware AI model selection and automatic code generation
+- **Dual Interface**: CLI tool and VS Code extension for different development preferences
+- **Pattern-Based AI Selection**: Automatic AI model routing based on node patterns
+- **Parallel Execution**: Dependency-aware parallel execution of tickets
+- **Progress Tracking**: Real-time status monitoring and execution metrics
 
-## Default Structure
+## Framework Architecture
 
-When you open the Schröd Explorer, you'll see the default structure:
+The Schröd Framework enforces a strict 4-level hierarchy where each development task exists in quantum-like superposition states:
 
 ```
-📱 Project@Schröd          # Application root
-├── 🏗️ Schröd.ui           # User Interface Domain
-├── ⚙️ Schröd.logic        # Business Logic Domain
-└── 🧪 Schröd.test         # Testing Domain
+Level 1 (App): ProjectName@Schröd
+├── Level 2 (Domain): Schröd.ui | Schröd.logic | Schröd.test
+    ├── Level 3 (Feature): FeatureName@Schröd.[domain]
+        └── Level 4 (Ticket): TaskName@Schröd.ticket
 ```
+
+### Node States
+- **Pending**: Task not yet started (superposition state)
+- **Running**: Currently being executed by AI
+- **Completed**: Successfully implemented
+- **Failed**: Execution failed, requires attention
 
 ## Installation
 
-1. Install from VS Code Marketplace
+### VS Code Extension
+1. Install from VS Code Marketplace (search "Schröd Framework")
 2. Open any project in VS Code
 3. Look for "Schröd Explorer" in the sidebar
-4. Start developing with structured AI guidance
 
-## Usage
+### CLI Tool
+```bash
+npm install -g schrod-cli
+```
 
-### Initialize a Project
-1. Click on "📱 Project@Schröd" in the explorer
-2. Use Command Palette: `Schröd: Initialize Project`
-3. Follow the structured development workflow
+## Core Commands
 
-### Commands Available
-- `Schröd: Initialize Project` - Set up project structure
-- `Schröd: Create App Spec` - Define application requirements
-- `Schröd: Decompose to UI/Logic` - Break down into domains
-- `Schröd: Add Feature` - Add new features
-- `Schröd: Create Tickets` - Break features into implementation units
+### VS Code Extension Commands
+- `Schröd: Initialize Project` - Set up hierarchical project structure
+- `Schröd: Create App Spec` - Define application requirements from ideas
+- `Schröd: Decompose to UI/Logic` - Break down into UI/Logic/Test domains
+- `Schröd: Add Feature` - Add features to specific domains
+- `Schröd: Create Tickets` - Generate implementation tickets from features
+- `Schröd: Run` - Execute individual nodes with AI
+- `Schröd: Run All Tickets` - Execute all tickets with dependency resolution
+- `Schröd: Status` - Show project progress and metrics
+- `Schröd: Resume Failed` - Retry failed executions
 
-## Schrödinger Structure Concept
+### CLI Commands
+```bash
+schrod init <project-name>    # Initialize new project
+schrod run <node-pattern>     # Execute nodes matching pattern
+schrod status                 # Show project status
+```
 
-The framework follows a strict 4-level hierarchy:
+## AI Integration
 
-1. **Level 1 - App**: Overall application specification
-2. **Level 2 - Domain**: UI, Logic, or Test separation
-3. **Level 3 - Feature**: Specific feature implementation
-4. **Level 4 - Ticket**: Atomic implementation units
+The framework supports multiple AI providers with intelligent routing:
 
-This structure provides clear context for AI development assistance and systematic project organization.
+### Default Configuration
+```json
+{
+  "defaultAI": "claude-sonnet-4",
+  "aiOverrides": {
+    "**/*@Schröd.ui/**": "claude-haiku",
+    "**/*@Schröd.logic/**": "claude-sonnet-4", 
+    "**/*@Schröd.test/**": "gpt-4"
+  },
+  "outputDir": "src",
+  "parallelExecutions": 3
+}
+```
 
-## Configuration
+### Supported AI Models
+- Claude Sonnet 4 (complex logic, architecture decisions)
+- Claude Haiku (UI components, simple implementations)
+- GPT-4 (testing, documentation)
+- Claude Opus (complex system design)
 
-Customize the extension behavior in VS Code settings:
+## Development Workflow
+
+1. **Initialize**: Create project with `Schröd: Initialize Project`
+2. **Specify**: Define app idea with `Schröd: Create App Spec`
+3. **Decompose**: Break into domains with `Schröd: Decompose to UI/Logic`
+4. **Add Features**: Create features with `Schröd: Add Feature`
+5. **Create Tickets**: Generate tickets with `Schröd: Create Tickets`
+6. **Execute**: Run implementation with `Schröd: Run All Tickets`
+
+## Configuration Files
+
+Each node maintains specification files:
+- `idea.md` - Initial concept description
+- `requirements.md` - Detailed requirements
+- `design.md` - Design specifications
+- `spec.md` - Implementation specifications
+
+## VS Code Settings
 
 ```json
 {
   "schrod.showDefaultStructure": true,
-  "schrod.defaultAI": "claude-sonnet-4",
-  "schrod.autoRun": false,
-  "schrod.parallelExecutions": 3
+  "schrod.defaultAI": "claude-sonnet-4"
 }
 ```
 
 ## Requirements
 
-- VS Code 1.74.0 or higher
-- Node.js for development projects
+- VS Code 1.74.0 or higher (for extension)
+- Node.js 18.0.0 or higher
+- AI API keys (Claude, OpenAI, etc.)
+
+## Framework Philosophy
+
+The Schröd Framework treats development tasks as quantum-like entities that exist in superposition until "observed" (executed) by AI systems. This approach enables:
+
+- **Systematic Development**: Enforced hierarchical structure
+- **AI-First Implementation**: Heavy reliance on AI for code generation
+- **Domain Separation**: Clear separation of UI, logic, and testing concerns
+- **Progressive Refinement**: From high-level ideas to specific implementation
 
 ## Contributing
 
-This extension is part of the Schrödinger Framework ecosystem. Visit our [GitHub repository](https://github.com/NishizukaKoichi/Schrod) for more information.
+Visit our [GitHub repository](https://github.com/NishizukaKoichi/Schrod) for documentation, issues, and contributions.
 
 ## License
 
